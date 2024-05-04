@@ -17,6 +17,11 @@ body {
     text-align: center;
 }
 
+.nav-flex {
+    display:flex;
+    justify-content: center;
+}
+
 nav a {
     text-decoration-line: none;
     color: black;
