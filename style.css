@@ -19,7 +19,9 @@ body {
 
 .nav-flex {
     display:flex;
+    flex-wrap: wrap;
     justify-content: center;
+    align-content: space-around;
 }
 
 nav a {
@@ -29,11 +31,18 @@ nav a {
     padding: 10px 20px;
     border-radius: 10%;
     border-width: thin;
+    margin: 5px;
     margin-right: 10px;
 }
 
 nav a:hover {
     color:blue;
+}
+
+@media only screen and (max-width: 768px) {
+    .nav-flex {
+        justify-content: space-around; /* Change alignment for smaller screens */
+    }
 }
 
 header{
@@ -219,29 +228,39 @@ footer{
     margin: 20px;
     padding: 10px;
     display: grid;
-    grid-template-columns: 45% 45%;
-    grid-template-rows: 500px 20px;
+    grid-template-columns: 1fr; /* Initially, one column for full width */
     gap: 10px;
 }
 
 .about-img img {
-    height: 500px;
-    width: 400px;
+    height: auto; /* Adjusted height to maintain aspect ratio */
+    max-width: 100%; /* Ensures the image doesn't overflow its container */
     border-radius: 3%;
 }
 
 .about-img {
-    grid-column: 1 / 2;
+    grid-row: 1; /* Adjusted to remove grid-column */
 }
 
 .about-paragraph {
-    grid-column: 2 / -1;
-    margin-top: 35%;
-    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    grid-row: 2; /* Added grid-row to ensure paragraph goes below image */
+    align-self: center; /* Align paragraph vertically center */
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     font-size: larger;
-    color:crimson;
+    color: crimson;
 }
 
+@media only screen and (min-width: 768px) {
+    .about-container {
+        grid-template-columns: 45% auto; /* Adjusted grid template columns for larger screens */
+    }
+
+    .about-paragraph {
+        grid-column: 2; /* Added grid-column for paragraph */
+        grid-row: 1; /* Adjusted grid-row for paragraph */
+        align-self: center; /* Align paragraph to the top */
+    }
+}
 
 .pdf {
     padding: 20px;
